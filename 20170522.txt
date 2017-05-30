@@ -26,3 +26,4 @@ var(let) foo = function(x){...} ger en funktionspekare.
 paranteser efter funktion betyder att fubktionen anropar sig självt. tex main = function foo(){....}; main(); förkortas med (function(){...})(); 
 
 			
+
