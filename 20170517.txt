@@ -1,0 +1,97 @@
+/******************************************************************************************************************************/
+
+											GARAGET
+
+/******************************************************************************************************************************/
+
+
+					Redovisning garage senast onsdag nästa vecka
+					byt namn i garage till lot
+
+cw.enviroment.newLine = \n		
+Abstrahering		Istället för att Limitedlist-klassen har kontrollfunktioner skapas en mellanklass som sköter allt detta.
+vehicle borde vara abstrakt
+ui ska inte behöva instansiera fordon
+kolla om finns		if(vehicles.Any())
+garage abstrakt. för finns ingen anlednng att instansiera vehicle eller att garagemanager gör dte av misstag, 
+istället för att ha array med vehicletyper ska man kunna fråga garagemanager om vilka typer som finns.
+kan bryta ut menyerna till en mer generell
+i cases otydligt med tex 3 istället för 'båt'
+
+					
+
+					i visat elevexempel: klasser som fil -> airplane boat bus car garage garagemaneger  motorcycle userinterface vehicle itextsearchable //itextsearchable onödigt
+					Efter val tex listning -> "Tryck på valfri tangent"
+					fritextsökning. Fälten, propertys converteras till text. Ange casesensitiv
+					måste kunna ångra sig och gå ut, tex ångra att radera
+
+		main		ui = new
+					while{iu.create()
+					iu.start()}
+
+		ui			tom ctor
+					skriver meny, läser key//snyggare än string console.readkey(true).keychar
+					ange storlek på nytt garage
+					int size = promptfornumberinput(message);
+
+					sök by type returnerar resultarray vehicle
+					uiklass ska ej veta vilka typer som finns. 
+					
+		garage		int count räknare för antal fordon
+					add
+						if regnum exists - return false. Bättre om mannager meddelar att regnr finns
+		searches	använder .Matches
+
+					vehicle matches
+					publ virtual bool matches(string keyword)
+					if(color== matchword || wheel)
+
+					airplane matche
+					return base,Matches(keywor)||wingspan==keyword ||hasJetengines &&keyword.tolow =="jet"
+					sökning ska inte var beroende av klassnamn etc. dvs sök inte på klassnamn såsom jag gör.
+
+		LINQ
+					var result = _spaces
+								.Where(v => v !=null &&
+								.Where(x => v.Matches(keyword))
+								.toArray()							; //_spaces=garagarra where - för varje där item inte är null 
+
+							ekvivalnt med
+
+					for(int i =0;i<:spaces.Length;i++;){
+						if(_spaces[i]!=null){
+							if(_spaces[i].Matches(keyword))
+							vehicles[_spaces[i].RegNum]= _spaces[i]; //returnerar bara kopior
+							}
+					}
+
+
+toString			base()tostring, topspeed, hassidecar?"ja":"nej" //hassidecar  bool;
+					publ bool PArkVehil(vehicle v){return _garage.Add(v);}
+
+
+filhantering		filestream dat binaryformatter
+					använd "using" för att anrop(runtimemiljö) garbagecollector direkt efter metod exekverats
+					filväg ska anges med metod el property
+    
+					casting (car)vehicle kan skrivas vehicle as car  
+
+ui kan vara oberoende av consol. Kan ha mellanklass för olika interfaces(webb, consol) 
+
+
+
+
+/******************************************************************************************************************************/
+
+											WEBB  ( HTML / CSS )
+
+/******************************************************************************************************************************/
+
+
+
+req= skickas från browser, request skickas från server.
+Header skickar info som content-length:33... och content-type:image/png
+statuskod: 404tex 200 = gick bra. 300-koder resursern finn men på annan plats. 500 - fel på serversida, 400- fel på klientsida
+
+
+

@@ -1,0 +1,28 @@
+					JavaScript
+
+Ingen skillnad mellan enkel- och dubbelfnutt. Semikolon frivilligt. 
+
+=			tilldelning
+==			"1"=1 -> sant. Tvingar fram konvertering.
+===			Motsvarar == i Java
+
+scalar		Betyder värde och man vara vad som.
+Array		JS är otypat så en array motsvarar mer C#'s dictonary. 
+Object		
+
+			Om variabler inte definieras kommer de att göras i runtimemiljön. Dessa blir då globala och riskerar att skriva över andra globala variabler.
+			Deklareras de tex var s=7; tillhör de scoopet.
+
+exempel		funcion foo(x){		Skillnad: returntyp anges inte liksom inte heller inparameter.  Den här metoden skapar global variabel y.
+				var y=undefined;	Om detta läggs till försvinner y när metoden lämnas.
+				if(x>5){
+					y=x/2;
+					}
+				return y;
+			}
+
+let			readonly. Går således ej att ändra.
+var(let) foo = function(x){...} ger en funktionspekare.
+paranteser efter funktion betyder att fubktionen anropar sig självt. tex main = function foo(){....}; main(); förkortas med (function(){...})(); 
+
+			

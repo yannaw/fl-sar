@@ -1,0 +1,89 @@
+﻿OOP I - tre stöttepelare:
+				Arv				Kod återanvänds	
+				Polymorfism		Funktionalitet återanvänds och specialiseras
+				Inkapsling		Paketerar data som hänger ihop och skapar sedan instans som håller koll.
+
+namnespace -	PascalCase. Ligger oftast fysiskt i separata undermappar
+				FQN - FullyQualifiedName - När hela sökvägen anges tex mapparna: FQN anrop i Program till Employee blir då EmployeeDirectory.Models.Employee
+				EmplyeeDirectory(Folder (Projekt))
+					Program(Class)
+					Models(Folder)
+						Employee(Class)
+						Directore (Class)
+
+using-diektiv	FQN - var file=System.IO.File.Open(...  Använding av alias, using direktiv, förkortar anropet tex: "using IoFile = System.IO.File;  - >   file=File.Open(..."
+				File kan vara både class och propert(variabelfält) i detta exempel
+
+using static	Exempel på statiska klasser är Console och Math. Eftersom dessa är statiska sker anrop genom FQN "cw(System.Math.Sqrt(..."  - >   using System.Math;  - >  cw(Sqrt(...
+
+Arv				Relationer mellan klasser. Basklass, superclass, parent etc är den ärvda klassen. Subklass, child är den som ärver. En klass kan bara ha en basklass "Single Inheritance". Kan kallas för specialisering.
+
+				Supklassen kan inte ta bort properties eller metoder. Konstruktor ärvs inte. MA ska kunna säga att basklassen är en (is a). "A Cat is a Animal"
+				Subklassen anger dess basklass med kolon class Cat : Animal {... Här är Cat subklass till Animal
+				Konstruktorn anropar basklassens konstruktor explicit eller implicit
+	ex			class Animal {
+					public Animal(int weight){
+						Weight = weight; }
+					public Animal(){set;get;
+									...
+				class Cat : Animal {
+					public Cat(int weight) : base(weight){
+						...
+
+Polyformism		Specificerar basklassens beteende utan att ta bort egenskaper eller metoder. Subklassen kan ändra eller utöka
+	regel 1		Subklasser kan hanteras som instanser av basklasser (En Cat kan hanteras som ett Animal)
+		ex		var cars = new List<car>();
+				car.Add(new SportCar());
+	regel 2		Den mest specialiserade metoden eller egenskapen används automatiskt
+		ex		foreach(var car in cars){ Anropar Car.Start() för bilar och SportCar.Start() för objekt av typen SportCar
+					car.Start();
+					...
+
+virtual			genom att markera en metod virtual tillåter man subklassen ersätta en metod med en egen, sk override. virtual och override ärvs i alla led om senare arv
+		ex		class car{
+					public int Speed{get set}
+					public virtual void Start(){speed=50};
+				}
+override		public SportCar:Car{
+		ex		override public void Start(){Speed=100;}
+	new			new public void Start(){}	betyder det att den inte overrides. Ovanligt och bör undvikas utan bättre att skriva egen metod med annat namn.
+				}
+
+abstract		Saknar implementation. Är utility-klasser, dvs verktygslådor och/eller hjälpklasser.Hela klassen måste vara abstract om en metod är det. Saknar måsvingar utan avslutas med semi.
+				Den abstrakta metoden kan inte användas utan används för att tvinga fram implementering
+		ex		public abstract void Start();
+				Idé med static är att det som kan vara null, tex Console.WriteLine inte kan exikveras. Man kan skapa objektet cw men om det är null kan man inte exikvera vidare,
+				därför måste den vara statisk och man testar objektet man skickar snarare än cw.
+				Anrop av statiska klasser görs genom klassnamnet
+		ex		cw.(Person.PersonCount());	Variabeln PersonCount är statisk.
+
+static			Statiska konstruktorer är alltid publik. Första gången en klass instatieras eller en statisk medlem anropas kommer klassens statiska konstruktor anropas, det är även sista gången.
+				Garbagecollektorn plockar aldrig bort statiska medlemmar. Poängen är att tex hämta resurser som används men bara en gång. Tex att hämta en tabell.
+
+Konstanter		statiska variabler, måste definieras vid deklarationen.
+		ex		class Square{
+					public const int Size = 50; //konstant 
+					public int NotConst;		//variabel
+					{ 
+						public Square(){...
+Readonly		Kan inte ändras, sätts i runtime, deklarationen eller konstruktorn.
+		ex		public readonly SqSize;
+				public Square(int size){
+					SqSize = 50;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+				

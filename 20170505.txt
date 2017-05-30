@@ -1,0 +1,23 @@
+Generics
+				<>=Diamantoperator
+
+				En metods "signatur" är namn och typerna på parametrar(nedan är signaturen Clamp, int, int, int). Kompilatorn går efter signatur för att bestämma vilken overload som är aktuell. 
+				Returntypen är inte del av signatur.
+
+		ex		int Clamp(int value, int min, int max){
+					var lover = Math.Max(value, min);
+					var result= Math.Min(lover, max);
+					reurn result;
+				} 
+
+				En metod som returnerar värden inom ett visst intervall. Värden utanför returnerar intervallets min- resp maxvärde. Metoden nedan kan overloadas för double 
+				men eftersom detta genererar mycket cutnpaste-kod om alla numeriska typer vill vi ha en metod som tar alla typer, dvs kunna skicka in typen som variabel. 
+				"where T:... " när inte hela klassen ska ärva. Här ska bara T vara jämförbar. Generics kan vara nästlade: ex "Foo<Bar<T1, T2>, T3>"
+		
+	lösning		T Clamp<T>(T value, T min, T max) where T:IComparable{
+					T lover=(T)Math.Max(value, min);
+					T result=(T)Math.Min(lover, max);
+					return result;
+				}
+
+				

@@ -1,0 +1,66 @@
+﻿2017-04-20  Intro C#
+
+värdetyper kan ej anta värdet null. Från C#5(ev 6) ger möjligheten till nullable, deklareras mha frågetecken. ex: int? uttalas som fråga int? x=... utallas som frågan "int x?"
+	numeriska
+		heltal:		byte,short, int, long
+		flyttal:	float, double, decimal
+						float, double kan ge jämförelsefel då det inte finns bra sätt att representerar decimaldelen. decimal används då då den har högre precision.
+	tecken
+		char:		kan castas till byte.  Går ej addera , tex +5.
+		string:		referenstyp, dvs ett objekt. skiljer sig från java genom att man kan jämföra med operator '='
+					tex: string s= "g", string t="g"	if(s==t){...} Blir alltid falskt i java, C# jämför värdet av, java jämför referens.
+	
+	bool:			kan bara anta värdet true, false. I java kan bool även tolkas som 0 och 1 vilket inte går i C#
+
+struct vs class
+					Struct är en class men skillnaden mellan struct och class är att det första är av  värdetyp och den senare är refernstyp.
+	class			innehåller field, properties, method ex "static class Example{..." Static(statisk) = går ej att instansiera, dvs går ej att skapa ett objekt med new(),
+					 Om class static måste metod vara det. Runtimemiljön skapar en enda instans av static class.
+
+accessnivå			Alla classer har accessnivå internal by default, public/private måste deklareras explisivt. 
+					publica fält skrivs med inledande versal, private med gemen == Pascalcasing
+					oistansierade object har värdet null. Instansiering ger referens till nyskapade objectet.
+
+					Instansiering sker vanligtvis genom Vehicle v1 = new Vehicle();. För att förenkla kan man lika gärna skriva:
+					var v1 = new Vehicle();
+
+exempel				class Vehicle {	
+	fält			public string Brand;
+					public string Color;
+					public int MaxSpeed;
+
+constructor	(ctr)	public Vehicle(string brand, 
+									string color,
+									int maxSpeed) {
+									Brand=brand; //etc
+						}
+					}
+
+					När constructor saknas skapas en default av runtime,(eg this.() -> null),  denna försvinner så fort man har en annan ctr. Overload = när dte finns flera ctrl:er.
+
+metod				public string ShowColor(){
+accessor					return this.Color;	//just här i denna class är this. överflödigt, hade räckt med return Color; Kodkonventionen rekommenderar inte this där det inte är nödvändigt. Är color privat kommer detta dock att vara nödvändigt.
+					}
+mutator				public void Paint(string color){
+						if(color=="" || ... {
+							this.color=color;
+						}
+					}
+anrop				sker med ett instansierat objekt tex v1.ShowColor();
+
+getter&setter		Sker enligt pattern get/set
+exempel				public string Color{
+						get{
+							return color;	// refererar till objektets fält color kallas backingfield.
+						}
+						set{
+						if(value==....)		//value är ett nyckelord
+							color=value;	
+						}
+					}
+
+anrop				v1.Color="..."; Operatorer		+= kan användas vilket inte är möjligt med vanliga getter&setter. 
+					v1.SetColor(v2.GetColor());		anrop med vanliga getter&setter
+
+förenklad metod		public string Color{ get; set; }
+					Om fält string color raderas genererar denna kod, r65, ett backingfield som inte kan accessas annat än genom property. Dvs detta har accessnivå mer än private (secret). 

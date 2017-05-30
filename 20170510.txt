@@ -1,0 +1,20 @@
+Generics/LINQ
+
+Generics		Tex enda som skiljer i metoden är typen(int etc) För att göra den generics läggs diamantoperator till
+				int Add(int a, int b)return a+b;  =>  T Add<T>(T a, T b)return a+b;    
+				Metoder som har olika typer in och ut måste anropas med diamantoperatorn eftersom kompilatorn inte vet vilken typ U(returtypen) ska vara
+			ex	U Foo<T, U>(T a){...}
+				
+				När generiska uttryck endast fungerar för vissa typer anges fungerande typer explisivt, tex fungerar inte bool i:  T Add<T>(T a, T b)return a+b; => T Add<T>(T a, T b) where T:int, float...{return a+b}
+				Om det krävs att objektet är instansierat anges detta med: "where T=new" 
+
+				List är en klass som kan hantera generiska typer, tex List<int>. 
+castning	ex	Collection vs = new Collection
+				vs.Add(new Vehicle);
+				vs[0]-> Object
+				(v as Vehicle)
+				(vs[0]. as  Vehicle)
+
+				var cars = new List<Car>();
+				cars.Add(new SportsCar());
+				var car= cars[0]; //returnerar Car då cars är deklarerad till typen Car
