@@ -1,0 +1,4 @@
+			MVC - Model View Controller
+
+Cykliskt beroende klasser som beror på varandra i cykler. Vanligt i spagettikod. Beoroende ska därför bara vara nedåt. 
+
